@@ -9,6 +9,7 @@ $tr = new GoogleTranslate;
 $tr->setTarget('pt-br');
 $json = file_get_contents("https://api.api-onepiece.com/v2/fruits/en");
 $akumas = json_decode($json, true);
+$arrei =[];
 foreach($akumas as $ass){
 $description = $tr->translate($ass['description']);
 $romanname= $ass['roman_name'];
@@ -20,5 +21,6 @@ $akuma=R::dispense('akuma');
 $akuma->description=$description;
 $akuma->image=$image;
 $akuma->name=$romanname;
-R::store($akuma);
+array_push($arrei, $akuma);
 }
+R::storeAll($arrei);
