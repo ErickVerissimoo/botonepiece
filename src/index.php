@@ -1,7 +1,12 @@
 <?php
-require_once __DIR__.'/vendor/autoload.php';
-require_once __DIR__.'/rb-mysql.php' ;
+
+namespace Discord\Proihibida;
+
+require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__.'/../rb-mysql.php' ;
 use Discord\Discord as bot;
+use R;
+
 R::setup('mysql:host=172.18.0.2;dbname=bot', 'root','rootpassword');
 
 use Discord\Parts\Channel\Message;
@@ -22,12 +27,13 @@ echo 'bot iniciou'.PHP_EOL;
 
 
 });
-$discord->on(Event::MESSAGE_CREATE, function(Message $message, bot $discord){
- if($message->author->bot){
+$discord->on(Event::MESSAGE_CREATE, function(Message $message){
+if($message->author->bot){
 return;
- }
-
-    echo 'O '."{$message->author->username}". ' mandou mensagem'."\n";
+}
+if($message->content==="!teste"){
+$message->reply('teste passado');
+}
 });
 $discord->run();
 
