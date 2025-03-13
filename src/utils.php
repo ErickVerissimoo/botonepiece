@@ -12,16 +12,21 @@ function convert(array $akumas): array{
     $validTypes = ['Logia','Paramecia', 'Zoan'];
 $arrei =[];
 foreach($akumas as $ass){
-    
+    $romanname='';
     $description = $tr->translate($ass['description']);
-    $romanname= $ass['roman_name'];
-    $type = $ass['type'];
-    $type==='Zoan Mythique'??'Zoan';
+    if(array_key_exists('roman_name', $ass)){
+        $romanname =trim($ass['roman_name']);
+    }
+    else{
+        continue;
+    }
+
+    $romanname= trim($romanname);
+    $type =trim( $ass['type']);
+    $type = ($type === 'Zoan Mythique') ? 'Zoan' : $type;
     $exists = in_array($type, $validTypes);
     $raridade = getRaridade($romanname);
-    if(!$romanname || !$exists ){
-    continue;
-    }
+    if( !$exists ){continue;}
     
     
     

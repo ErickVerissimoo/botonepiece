@@ -51,5 +51,5 @@ $container->set('raro', $raros);
 $container->set('epico', $epicos);
 $container->set('lendario', $lendarios);
 $container->set('mitico', $miticos);
-echo 'hello';
+
 return $container;

@@ -2,11 +2,12 @@
 namespace Discord\Proihibida;
 
 
-
+require 'utils.php';
 require_once __DIR__.'/../vendor/autoload.php';
-
+require_once __DIR__.'/rb-mysql.php';
 use R;
-use Stichoza\GoogleTranslate\GoogleTranslate;
+use function Discord\Proihibida\convert;
+
 R::setup('mysql:host=172.18.0.2;dbname=bot', 'root','rootpassword');
 
 
