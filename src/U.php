@@ -52,7 +52,7 @@ class U
             $embed->setColor('#FF0000'); 
         }
 
-        $embed->setImage();
+        $embed->setImage(self::getRandomImage());
         $embed->setDescription($akuma->description);
         $embed->setFooter($akuma->name);
 
@@ -69,5 +69,6 @@ public static function getRandomImage(): string
 {
     $array = ['https://tenor.com/pt-BR/view/luffy-eating-lufy-lufy-kid-kid-luffy-gomu-gomu-no-mi-gif-25221576',
 'https://media1.tenor.com/m/zAwi-9jeOAEAAAAC/akuma-no-mi.gif'];
+return array_rand($array);
 }
 }
